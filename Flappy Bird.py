@@ -13,13 +13,13 @@ window_height = 572
 window = pygame.display.set_mode((window_width, window_height))
 pygame.display.set_caption('Flappy Bird')
 
-#define font
+#font
 font = pygame.font.SysFont('Bauhaus 93', 60)
 
-#define colours
+#colours
 white = (255, 255, 255)
 
-#define game variables
+#game vars
 ground_scroll = 0
 scroll_speed = 4
 flying = False
@@ -95,7 +95,7 @@ class Bird(pygame.sprite.Sprite):
 				self.image = self.images[self.index]
 
 
-	             #BIRD ROTATION
+	             #BIRD ROTATE
 			self.image = pygame.transform.rotate(self.images[self.index], self.vel * -2)
 		else:
 			
@@ -175,7 +175,7 @@ while run:
  
 	window.blit(ground_img, (ground_scroll, 470))
 
-	#check the score
+	#score cheker
 	if len(pipe_group) > 0:
 		if bird_group.sprites()[0].rect.left > pipe_group.sprites()[0].rect.left\
 			and bird_group.sprites()[0].rect.right < pipe_group.sprites()[0].rect.right\
@@ -188,7 +188,7 @@ while run:
 	draw_text(str(score), font, white, int(window_width / 2), 20)
 
 
-	#look for collision
+	#collision detection
 	if pygame.sprite.groupcollide(bird_group, pipe_group, False, False) or flappy.rect.top < 0:
 		game_over = True
 	
